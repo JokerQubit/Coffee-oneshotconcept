@@ -1,0 +1,219 @@
+/* ==========================================================================
+   MAISON PUR & — MONUMENTAL & EDITORIAL TYPOGRAPHY
+   Homage to the Haute Couture Reference Aesthetic
+   ========================================================================== */
+
+/* Brand Monogram in Navigation */
+.brand-monogram {
+  font-family: var(--font-serif-italic);
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  color: var(--color-text-light);
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  transition: transform var(--duration-fast) var(--ease-fluid);
+}
+
+.brand-monogram span {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-gold);
+}
+
+/* Monumental Hero Headline: MA/SON PUR& */
+.monumental-hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.75rem, 11vw, 10.5rem);
+  font-weight: 800;
+  line-height: 0.84;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+.hero-title-row {
+  display: flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.hero-title-row .serif-italic-accent {
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: lowercase;
+  color: var(--color-gold-light);
+  letter-spacing: -0.02em;
+  margin-left: 0.05em;
+  transform: translateY(0.04em);
+  display: inline-block;
+}
+
+.hero-title-row .ampersand-accent {
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.9em;
+  color: var(--color-gold);
+  margin-left: 0.08em;
+}
+
+/* Section Monumental Title: ABOUT US */
+.section-monumental-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 9.5vw, 8.5rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-2xl);
+  user-select: none;
+}
+
+.section-monumental-title .italic-u-accent {
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-weight: 400;
+  text-transform: lowercase;
+  color: var(--color-gold-dark);
+  letter-spacing: -0.03em;
+  display: inline-block;
+  transform: translateY(0.06em) scale(1.05);
+}
+
+.section-monumental-title.dark-mode {
+  color: #ffffff;
+}
+
+.section-monumental-title.dark-mode .italic-u-accent {
+  color: var(--color-gold-light);
+}
+
+/* Sub-Headings and Section Eyebrows */
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--color-gold);
+}
+
+/* Editorial Body Copy */
+.editorial-narrative {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--color-text-body);
+}
+
+.editorial-narrative.light-mode {
+  color: var(--color-text-body);
+}
+
+.editorial-narrative.dark-mode {
+  color: var(--color-text-subtle);
+}
+
+.editorial-narrative p + p {
+  margin-top: var(--space-md);
+}
+
+/* High-Impact Metric Numbers (Reference 250+, 15, 12+, 40k+) */
+.metric-huge-number {
+  font-family: var(--font-sans);
+  font-size: clamp(2.75rem, 5.5vw, 4.75rem);
+  font-weight: 500;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--color-text-dark);
+  display: block;
+}
+
+.metric-huge-number.dark-mode {
+  color: #ffffff;
+}
+
+.metric-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-lg);
+  font-weight: 300;
+  line-height: 1.35;
+  color: var(--color-text-body);
+  margin-top: var(--space-xs);
+  letter-spacing: -0.01em;
+}
+
+.metric-label.dark-mode {
+  color: var(--color-text-subtle);
+}
+
+/* Technical MASL and Metadata Badges */
+.tech-meta-badge {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-subtle);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+}
+
+.tech-meta-badge .bracket {
+  color: var(--color-gold);
+  font-weight: 400;
+}
+
+/* Editorial Link / CTA With Arrow */
+.editorial-action-link {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  transition: color var(--duration-fast) var(--ease-fluid);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.editorial-action-link .arrow-icon {
+  font-size: 1.15em;
+  transition: transform var(--duration-normal) var(--ease-fluid);
+}
+
+.editorial-action-link:hover .arrow-icon {
+  transform: translate(3px, -3px);
+}
+
+.editorial-action-link.dark-text {
+  color: var(--color-text-dark);
+}
+
+.editorial-action-link.dark-text:hover {
+  color: var(--color-gold-dark);
+}

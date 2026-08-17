@@ -1,0 +1,7 @@
+# Large uncompressed video files (>100MB)
+assets/videos/roastery_ambient.mp4
+
+# Python / IDE cache
+__pycache__/
+*.pyc
+.system_generated/

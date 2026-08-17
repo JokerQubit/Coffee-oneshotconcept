@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MAISON PUR & — Haute Torréfaction & Architecture Sensorielle</title>
+  <meta name="description" content="A haute-couture specialty coffee atelier crafting timeless sensory extractions, ultra-high elevation micro-lots, and precision thermal architecture.">
+  <meta name="keywords" content="Specialty coffee, Maison Pur, Geisha Panama, Sudan Rume, Haute Torrefaction, Sensory Architecture, Cupping Lab">
+  <meta property="og:title" content="MAISON PUR & — Haute Torréfaction & Architecture Sensorielle">
+  <meta property="og:description" content="Our vision blends simplicity, natural textures, and refined forms into extractions that feel truly alive.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/hero_lounge.jpg">
+  
+  <!-- Favicon Monogram -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.ico">
+
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/glassmorphism.css">
+  <link rel="stylesheet" href="css/layout.css">
+
+  <!-- Three.js, OrbitControls & GLTFLoader for Real-Time Photorealistic 3D Spatial Scene -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CoffeeShop",
+    "name": "MAISON PUR &",
+    "image": "assets/images/hero_lounge.jpg",
+    "description": "Haute Torréfaction & Architecture Sensorielle. Ultra-high elevation micro-lots and precision thermal crafting.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Bahnhofstrasse 45",
+      "addressLocality": "Zurich",
+      "postalCode": "8001",
+      "addressCountry": "CH"
+    },
+    "priceRange": "$$$$"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Native Audio Tag for Direct Browser Playback -->
+  <audio id="violinAudioElement" src="assets/audio/classical_strings_minor.mp3" loop preload="auto"></audio>
+
+  <!-- Site Header & Glass Navigation Pill -->
+  <header class="site-header">
+    <div class="header-left">
+      <a href="#" class="brand-monogram" aria-label="Maison Pur & Home">
+        M<span>P</span>
+      </a>
+      <canvas id="audioWaveCanvas" class="header-audio-wave" width="96" height="40"></canvas>
+    </div>
+
+    <nav class="header-center" aria-label="Main Navigation">
+      <div class="nav-pill-container">
+        <a href="#about" class="nav-link">About us</a>
+        <a href="#atelier-3d" class="nav-link">3D Atelier</a>
+        <a href="#harvests" class="nav-link">Portfolio</a>
+        <a href="#quiz" class="nav-link">Palate Quiz</a>
+        <a href="#stages" class="nav-link">Stages of work</a>
+        <a href="#sensory-lab" class="nav-link">Sensory Lab</a>
+        <a href="#tasting" class="nav-link">Tasting Atelier</a>
+      </div>
+    </nav>
+
+    <div class="header-right">
+      <button id="btnToggleAudio" class="audio-toggle-btn" title="Toggle Classical Strings Soundtrack" aria-label="Toggle Sound">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+      </button>
+
+      <button class="cart-trigger-btn" aria-label="Open Atelier Box">
+        <span>ATELIER BOX</span>
+        <span id="cartBadgeCount" class="cart-badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Floating Luxury Classical Strings Minor Jukebox Player -->
+  <div class="floating-violin-player" style="position: fixed; bottom: var(--space-xl); left: var(--space-xl); z-index: 950; display: flex; flex-direction: column; gap: 8px; padding: 12px 18px; background: rgba(14, 12, 10, 0.94); backdrop-filter: var(--blur-md); -webkit-backdrop-filter: var(--blur-md); border: 1px solid var(--border-gold); border-radius: var(--radius-xl); box-shadow: 0 24px 50px rgba(0,0,0,0.75); max-width: 480px;">
+    
+    <!-- Top Row: Track selector pills -->
+    <div style="display: flex; gap: 6px; align-items: center; justify-content: space-between;">
+      <span style="font-family: var(--font-mono); font-size: 9px; color: var(--color-gold); letter-spacing: 0.12em; text-transform: uppercase;">
+        STRINGS MINOR ACOUSTICS:
+      </span>
+      <div style="display: flex; gap: 4px;">
+        <button class="track-select-pill active" data-track-index="0" style="padding: 3px 8px; font-size: 10px; font-family: var(--font-mono); background: rgba(255,255,255,0.06); border: 1px solid rgba(198,156,109,0.3); border-radius: 4px; color: var(--color-gold-bright); cursor: pointer;">01 Vivaldi G Min</button>
+        <button class="track-select-pill" data-track-index="1" style="padding: 3px 8px; font-size: 10px; font-family: var(--font-mono); background: rgba(255,255,255,0.06); border: 1px solid rgba(198,156,109,0.3); border-radius: 4px; color: #ffffff; cursor: pointer;">02 Bach D Min</button>
+        <button class="track-select-pill" data-track-index="2" style="padding: 3px 8px; font-size: 10px; font-family: var(--font-mono); background: rgba(255,255,255,0.06); border: 1px solid rgba(198,156,109,0.3); border-radius: 4px; color: #ffffff; cursor: pointer;">03 Viola Nocturne</button>
+      </div>
+    </div>
+
+    <!-- Middle Row: Controls, Track Info, Volume -->
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button id="btnPrevTrack" style="background: none; border: none; color: var(--color-gold); cursor: pointer; padding: 2px;" title="Previous Track">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+      </button>
+
+      <button id="btnPlayViolinFloating" class="btn-glass-primary" style="padding: 7px 16px; font-size: 11px; font-weight: 700; display: flex; align-items: center; gap: 6px; cursor: pointer; border-radius: var(--radius-pill);">
+        <span id="violinPlayIcon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+        <span id="violinPlayBtnText">TOCAR</span>
+      </button>
+
+      <button id="btnNextTrack" style="background: none; border: none; color: var(--color-gold); cursor: pointer; padding: 2px;" title="Next Track">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+      </button>
+      
+      <div style="display: flex; flex-direction: column; flex: 1; overflow: hidden;">
+        <span id="violinStatusLabel" style="font-family: var(--font-display); font-size: 12px; color: #ffffff; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          Vivaldi / Winter &amp; Concerto in G Minor
+        </span>
+        <span id="violinArtistLabel" style="font-size: 10px; font-family: var(--font-mono); color: var(--color-gold-bright); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+          Classical Solo Violin &amp; Strings • [G Minor]
+        </span>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 4px; padding-left: 8px; border-left: 1px solid rgba(255,255,255,0.12);">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold)" stroke-width="2">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+        </svg>
+        <input type="range" id="violinVolumeSlider" min="0" max="1" step="0.05" value="0.75" style="width: 50px; height: 3px; accent-color: var(--color-gold); cursor: pointer;">
+        <span id="violinVolumeReadout" style="font-family: var(--font-mono); font-size: 9px; color: var(--color-text-subtle); width: 24px;">75%</span>
+      </div>
+    </div>
+
+    <!-- Bottom Row: Progress Bar & Time -->
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div id="audioProgressBarContainer" style="flex: 1; height: 4px; background: rgba(255,255,255,0.12); border-radius: 2px; cursor: pointer; position: relative;">
+        <div id="audioProgressFill" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--color-gold), var(--color-gold-bright)); border-radius: 2px;"></div>
+      </div>
+      <span id="audioTimeDisplay" style="font-family: var(--font-mono); font-size: 9px; color: var(--color-text-subtle); min-width: 55px; text-align: right;">0:00 / 3:00</span>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         HERO SECTION — EXACT STYLISTIC RECREATION OF REFERENCE IMAGE
+         ========================================================================== -->
+    <section class="hero-section" id="hero">
+      <div class="hero-background-media">
+        <video autoplay loop muted playsinline preload="metadata" poster="assets/images/hero_lounge.jpg" class="hero-bg-image" style="width: 100%; height: 100%; object-fit: cover;">
+          <source src="assets/videos/atelier_masterpiece.mp4" type="video/mp4">
+          <source src="assets/videos/roastery_ambient_opt.mp4" type="video/mp4">
+          <img src="assets/images/hero_lounge.jpg" alt="Maison Pur Luxury Coffee Lounge" class="hero-bg-image">
+        </video>
+        <canvas id="heroAtmosphereCanvas" style="position: absolute; inset: 0; pointer-events: none;"></canvas>
+        <div class="hero-gradient-overlay"></div>
+      </div>
+
+      <div class="hero-content-layer">
+        <div class="hero-top-details">
+          <div class="tech-meta-badge">
+            <span class="bracket">[</span> CUVÉE RESERVE NO. 001 • 2,150 MASL <span class="bracket">]</span>
+          </div>
+          <div class="tech-meta-badge">
+            <span class="bracket">[</span> ZURICH • BOGOTA • TOKYO <span class="bracket">]</span>
+          </div>
+        </div>
+
+        <div class="hero-main-typography">
+          <h1 class="monumental-hero-title">
+            <div class="hero-title-row">
+              <span>MA</span>
+              <span class="serif-italic-accent">is</span>
+              <span>ON</span>
+            </div>
+            <div class="hero-title-row">
+              <span>PUR</span>
+              <span class="ampersand-accent">&amp;</span>
+            </div>
+          </h1>
+        </div>
+
+        <div class="hero-bottom-grid">
+          <div class="hero-left-editorial">
+            <p>
+              A haute-couture coffee atelier crafting timeless sensory extractions in the spirit of modern elegance.
+            </p>
+          </div>
+
+          <div class="hero-right-editorial">
+            <p>
+              Our vision blends simplicity, natural textures, and refined forms into spaces that feel truly alive.
+            </p>
+            <a href="#tasting" class="editorial-action-link">
+              <span>DISCUSS THE PROJECT</span>
+              <span class="arrow-icon">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT US SECTION — EXACT COMPOSITION OF REFERENCE IMAGE
+         Warm Alabaster Canvas with Asymmetric Editorial Photos & Metrics
+         ========================================================================== -->
+    <section class="about-section-container" id="about">
+      <div class="about-inner-layout">
+        <h2 class="section-monumental-title">
+          ABO<span class="italic-u-accent">u</span>T US
+        </h2>
+
+        <div class="about-top-grid">
+          <div class="about-text-column-split">
+            <div class="about-editorial-block">
+              <p>
+                Welcome to Maison Pur, a specialty coffee studio where every harvest is crafted to reflect a balance of elegance, terroir, and purpose. Our team of agronomists and roasters blends high-elevation varietals, natural micro-lot textures, and refined thermodynamic curves to create extractions that feel timeless and deeply personal.
+              </p>
+              <p style="margin-top: 1.25rem;">
+                Our mission is to transform coffee into living reflections of clarity, mineral complexity, and culinary harmony.
+              </p>
+            </div>
+
+            <div class="about-editorial-block">
+              <p>
+                We offer a full spectrum of sensory services — from botanical micro-lot development and micro-terroir curation to convective thermal profiling and complete tasting flight coordination.
+              </p>
+              <p style="margin-top: 1.25rem;">
+                Our approach is rooted in understanding your palate, translating origin stories into a cup where beauty works hand in hand with functionality.
+              </p>
+            </div>
+          </div>
+
+          <div class="about-top-image-wrapper">
+            <img src="assets/images/cupping_lab.jpg" alt="Maison Pur Architectural Cupping Laboratory and Tasting Bar" loading="lazy">
+          </div>
+        </div>
+
+        <!-- 4-Column Monumental Metrics (250+, 15, 12+, 40k+) -->
+        <div class="about-metrics-grid">
+          <div class="metric-card-item">
+            <span class="metric-huge-number">250+</span>
+            <span class="metric-label">Micro-lots curated</span>
+          </div>
+
+          <div class="metric-card-item">
+            <span class="metric-huge-number">15</span>
+            <span class="metric-label">Award design</span>
+          </div>
+
+          <div class="metric-card-item">
+            <span class="metric-huge-number">12+</span>
+            <span class="metric-label">Years of experience</span>
+          </div>
+
+          <div class="metric-card-item">
+            <span class="metric-huge-number">40k+</span>
+            <span class="metric-label">Sensory flights crafted</span>
+          </div>
+        </div>
+
+        <!-- Bottom Staircase Photo & Philosophy Callout -->
+        <div class="about-bottom-grid">
+          <div class="about-bottom-image-wrapper">
+            <img src="assets/images/terroir_harvest.jpg" alt="Maison Pur Atelier Lounge and Botanical Interior" loading="lazy">
+          </div>
+
+          <div class="about-bottom-callout">
+            <div class="section-eyebrow">THE ARCHITECTURAL ATELIER</div>
+            <h3 style="font-family: var(--font-display); font-size: 1.75rem; line-height: 1.2; letter-spacing: -0.02em;">
+              Spaces Designed for Sensory Transcendence
+            </h3>
+            <p style="font-size: 0.95rem; line-height: 1.6; color: var(--color-text-body);">
+              Every corner of our Zurich and Bogota ateliers is acoustically and thermally tuned to amplify olfactory acuity. Travertine stone, warm walnut, and ambient sunset light create a sanctuary for slow, contemplative extraction rituals.
+            </p>
+            <a href="#tasting" class="editorial-action-link dark-text">
+              <span>EXPLORE THE ATELIER</span>
+              <span class="arrow-icon">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         3D ATELIER SENSORIAL & UNREAL ENGINE 5 REAL-TIME ARCHITECTURE
+         Three.js Photorealistic Spatial Engine with PBR & Interactive Hotspots
+         ========================================================================== -->
+    <section class="cinema-section" id="atelier-3d">
+      <div class="cinema-container">
+        <div class="section-header-flex">
+          <div>
+            <div class="section-eyebrow">SPATIAL COMPUTING &amp; UNREAL ENGINE 5 AESTHETICS</div>
+            <h2 class="section-monumental-title dark-mode" style="margin-bottom: 0;">
+              3D ATELIER <span class="italic-u-accent">&amp;</span> ROASTERY
+            </h2>
+          </div>
+          <div class="cinema-chapters-nav">
+            <button class="cinema-chapter-btn bookmark-camera-btn active" data-cam="tour">360° Tour</button>
+            <button class="cinema-chapter-btn bookmark-camera-btn" data-cam="espresso">☕ Barista Unit</button>
+            <button class="cinema-chapter-btn bookmark-camera-btn" data-cam="cupping">🔬 Cupping Lab</button>
+            <button class="cinema-chapter-btn bookmark-camera-btn" data-cam="roaster">🔥 Roaster Drum</button>
+          </div>
+        </div>
+
+        <div class="cinema-video-frame" style="height: 620px; position: relative;">
+          <div id="threeCanvasContainer" style="width: 100%; height: 100%;"></div>
+
+          <!-- 3D Object Live Telemetry HUD -->
+          <div id="three3DTelemetryHUD" style="position: absolute; top: 20px; left: 20px; padding: 12px 18px; background: rgba(15, 12, 10, 0.85); backdrop-filter: var(--blur-md); -webkit-backdrop-filter: var(--blur-md); border: 1px solid var(--border-gold); border-radius: var(--radius-md); pointer-events: none; transition: all 0.3s ease;">
+            <div style="font-family: var(--font-mono); font-size: 10px; color: var(--color-gold); margin-bottom: 2px;">[ 3D SPATIAL TELEMETRY ]</div>
+            <div style="font-family: var(--font-display); font-size: 13px; color: #fff; font-weight: 700;">Haute Roastery Lounge — Zurich Hub</div>
+            <div style="font-size: 11px; color: var(--color-gold-bright); font-family: var(--font-mono); margin-top: 4px;">Click any 3D station for acoustic telemetry &amp; extraction physics</div>
+          </div>
+
+          <!-- Bottom Control Bar -->
+          <div class="cinema-glass-controls">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span class="tech-meta-badge" style="font-size: 10px;">
+                <span class="bracket">[</span> REAL-TIME THREE.JS PBR SHADERS • 60 FPS <span class="bracket">]</span>
+              </span>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <span style="font-family: var(--font-mono); font-size: 10px; color: var(--color-text-subtle);">
+                DRAG TO ROTATE • SCROLL TO ZOOM • CLICK TO INSPECT
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         TERROIR & HARVESTS — E-COMMERCE & SENSORY MATRIX
+         ========================================================================== -->
+    <section class="harvests-section" id="harvests">
+      <div class="harvests-container">
+        <div class="section-header-flex">
+          <div>
+            <div class="section-eyebrow">CURATED ALLOCATIONS</div>
+            <h2 class="section-monumental-title dark-mode" style="margin-bottom: 0;">
+              HARVESTS <span class="italic-u-accent">&amp;</span> CUVÉE
+            </h2>
+          </div>
+
+          <div class="filter-pills-bar">
+            <button class="filter-pill-btn active" data-filter="all">All Terroirs</button>
+            <button class="filter-pill-btn" data-filter="geisha">Geisha Reserve</button>
+            <button class="filter-pill-btn" data-filter="rare">Rare Species</button>
+            <button class="filter-pill-btn" data-filter="anaerobic">Anaerobic</button>
+          </div>
+        </div>
+
+        <div id="harvestsCardsGrid" class="harvests-cards-grid"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE PALATE QUIZ
+         ========================================================================== -->
+    <section class="quiz-section" id="quiz">
+      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <div class="section-eyebrow" style="justify-content: center;">PALATE ALCHEMY</div>
+        <h2 class="section-monumental-title dark-mode" style="margin-bottom: var(--space-xs);">
+          DISCOVER YOUR CUVÉE
+        </h2>
+        <p style="font-size: 0.95rem; color: var(--color-text-subtle); margin-bottom: var(--space-2xl);">
+          Answer 3 sensory questions to reveal the micro-lot harmonized with your neurological taste receptors.
+        </p>
+
+        <!-- Step 1 -->
+        <div class="quiz-step" data-step="1">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-gold); margin-bottom: var(--space-xs);">STEP 01 / 03: FLAVOR HORIZON</div>
+          <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: var(--space-lg);">Which primary flavor sensation moves you most?</h3>
+          <div class="quiz-options-grid">
+            <button class="quiz-option-btn" data-key="note" data-val="floral">
+              <strong style="color: var(--color-gold-bright); display: block;">Floral &amp; Ethereal</strong>
+              <span style="font-size: 12px; opacity: 0.8;">White Jasmine, Bergamot &amp; Stone Peach</span>
+            </button>
+            <button class="quiz-option-btn" data-key="note" data-val="spicy">
+              <strong style="color: var(--color-gold-bright); display: block;">Spiced &amp; Velvety</strong>
+              <span style="font-size: 12px; opacity: 0.8;">Cardamom, Cocoa Nibs &amp; Dark Berry</span>
+            </button>
+            <button class="quiz-option-btn" data-key="note" data-val="sweet">
+              <strong style="color: var(--color-gold-bright); display: block;">Exotic Sugar &amp; Honey</strong>
+              <span style="font-size: 12px; opacity: 0.8;">Marshmallow, Guava &amp; Lychee Blossom</span>
+            </button>
+            <button class="quiz-option-btn" data-key="note" data-val="citrus">
+              <strong style="color: var(--color-gold-bright); display: block;">Vibrant Citrus Clarity</strong>
+              <span style="font-size: 12px; opacity: 0.8;">Pink Grapefruit &amp; Sparkling Malic Acid</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="quiz-step" data-step="2" style="display: none;">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-gold); margin-bottom: var(--space-xs);">STEP 02 / 03: EXTRACTION VESSEL</div>
+          <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: var(--space-lg);">What is your preferred morning ritual vessel?</h3>
+          <div class="quiz-options-grid">
+            <button class="quiz-option-btn" data-key="method" data-val="v60">
+              <strong style="color: var(--color-gold-bright); display: block;">Conical Pour-Over</strong>
+              <span style="font-size: 12px; opacity: 0.8;">Hario V60 or Chemex Glass</span>
+            </button>
+            <button class="quiz-option-btn" data-key="method" data-val="espresso">
+              <strong style="color: var(--color-gold-bright); display: block;">Naked 9-Bar Espresso</strong>
+              <span style="font-size: 12px; opacity: 0.8;">Dense golden crema &amp; rich body</span>
+            </button>
+            <button class="quiz-option-btn" data-key="method" data-val="immersion">
+              <strong style="color: var(--color-gold-bright); display: block;">French Immersion</strong>
+              <span style="font-size: 12px; opacity: 0.8;">Full steeped extraction</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="quiz-step" data-step="3" style="display: none;">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-gold); margin-bottom: var(--space-xs);">STEP 03 / 03: CAFFEINE PROFILE</div>
+          <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: var(--space-lg);">What is your physiological caffeine tolerance?</h3>
+          <div class="quiz-options-grid">
+            <button class="quiz-option-btn" data-key="caffeine" data-val="regular">
+              <strong style="color: var(--color-gold-bright); display: block;">Standard Specialty (~1.1%)</strong>
+              <span style="font-size: 12px; opacity: 0.8;">Full cognitive clarity and focus</span>
+            </button>
+            <button class="quiz-option-btn" data-key="caffeine" data-val="low">
+              <strong style="color: var(--color-gold-bright); display: block;">Ultra-Low Naturally (~0.2%)</strong>
+              <span style="font-size: 12px; opacity: 0.8;">Coffea Eugenioides ancient genetics</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Result container -->
+        <div id="quizResultContainer" style="display: none; margin-top: var(--space-xl);">
+          <div id="quizResultContent"></div>
+          <button id="btnResetQuiz" class="btn-glass-secondary" style="margin-top: var(--space-md);">Retake Quiz</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         STAGES OF CRAFT (Matching Reference "Stages of work")
+         ========================================================================== -->
+    <section class="stages-section" id="stages">
+      <div class="stages-container">
+        <div class="section-eyebrow">THERMAL &amp; BIOLOGICAL DISCIPLINE</div>
+        <h2 class="section-monumental-title" style="margin-bottom: var(--space-xs);">
+          STAGES OF WORK
+        </h2>
+        <p style="max-width: 620px; font-size: 1rem; color: var(--color-text-body); margin-bottom: var(--space-2xl);">
+          The four immutable phases of our sensory architecture — from extreme altitude cherry picking to hermetic nitrogen aging.
+        </p>
+
+        <div class="stages-timeline-grid">
+          <div class="stage-step-card">
+            <div class="stage-number">/ 001</div>
+            <h3 class="stage-title">Altitude Selection</h3>
+            <p class="stage-desc">
+              Only micro-lots grown above 1,850m in shade-canopied volcanic soils are approved, ensuring high cherry density and complex malic acidity.
+            </p>
+          </div>
+
+          <div class="stage-step-card">
+            <div class="stage-number">/ 002</div>
+            <h3 class="stage-title">Bioreactor Fermentation</h3>
+            <p class="stage-desc">
+              72 to 120 hours of sealed anaerobic microbial fermentation under monitored ambient pressure, unlocking rare floral esters and stone-fruit aromatics.
+            </p>
+          </div>
+
+          <div class="stage-step-card">
+            <div class="stage-number">/ 003</div>
+            <h3 class="stage-title">Convective Roast</h3>
+            <p class="stage-desc">
+              Fluid-bed thermodynamic roasting with zero conductive contact burns. We execute an ultra-light Scandinavian Agtron curve to preserve origin sugars.
+            </p>
+          </div>
+
+          <div class="stage-step-card">
+            <div class="stage-number">/ 004</div>
+            <h3 class="stage-title">Nitrogen Hermetics</h3>
+            <p class="stage-desc">
+              Hermetic nitrogen-flushed sealing in recyclable biopolymer canisters, arresting oxidation while allowing enzymatic degassing for peak flavor stabilization.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         INTERACTIVE SENSORY LAB & BREWING CALCULATOR
+         ========================================================================== -->
+    <section class="brew-lab-section" id="sensory-lab">
+      <div class="brew-lab-container">
+        <div class="section-eyebrow">REFRACTOMETRIC EXTRACTION ENGINE</div>
+        <h2 class="section-monumental-title dark-mode" style="margin-bottom: var(--space-xs);">
+          SENSORY LAB
+        </h2>
+        <p style="max-width: 650px; font-size: 1rem; color: var(--color-text-subtle);">
+          Calibrate your brew parameters in real-time. Adjust dose, mineral water ratio, and brew temperature to calculate exact yield and TDS metrics.
+        </p>
+
+        <div class="brew-lab-split-grid">
+          <!-- Control Panel -->
+          <div class="brew-controls-panel">
+            <div class="method-selector-tabs">
+              <button class="method-tab-btn active" data-method="v60">Hario V60</button>
+              <button class="method-tab-btn" data-method="chemex">Chemex</button>
+              <button class="method-tab-btn" data-method="aeropress">Aeropress</button>
+              <button class="method-tab-btn" data-method="espresso">Espresso</button>
+              <button class="method-tab-btn" data-method="frenchpress">French Press</button>
+            </div>
+
+            <!-- Dose Slider -->
+            <div class="slider-control-group">
+              <div class="slider-label-row">
+                <span style="color: var(--color-text-light);">Coffee Dose</span>
+                <span id="doseVal" class="slider-val-readout">18 g</span>
+              </div>
+              <input type="range" id="doseSlider" class="custom-range-slider" min="12" max="45" value="18" step="1">
+            </div>
+
+            <!-- Ratio Slider -->
+            <div class="slider-control-group">
+              <div class="slider-label-row">
+                <span style="color: var(--color-text-light);">Water Ratio</span>
+                <span id="ratioVal" class="slider-val-readout">1:16</span>
+              </div>
+              <input type="range" id="ratioSlider" class="custom-range-slider" min="13" max="19" value="16" step="0.5">
+            </div>
+
+            <!-- Temp Slider -->
+            <div class="slider-control-group">
+              <div class="slider-label-row">
+                <span style="color: var(--color-text-light);">Water Temperature</span>
+                <span id="tempVal" class="slider-val-readout">93 °C</span>
+              </div>
+              <input type="range" id="tempSlider" class="custom-range-slider" min="85" max="98" value="93" step="1">
+            </div>
+
+            <!-- Stage Steps -->
+            <div style="margin-top: var(--space-xl); padding-top: var(--space-md); border-top: 1px solid rgba(255,255,255,0.08);">
+              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-gold); letter-spacing: 0.1em; margin-bottom: 8px;">
+                EXTRACTION PROTOCOL STAGES:
+              </div>
+              <ul id="brewStagesList" style="list-style: none; padding: 0;"></ul>
+            </div>
+          </div>
+
+          <!-- Live Telemetry & Stopwatch -->
+          <div class="brew-telemetry-display">
+            <div class="tech-meta-badge">
+              <span class="bracket">[</span> REAL-TIME EXTRACTION TELEMETRY <span class="bracket">]</span>
+            </div>
+
+            <div class="stopwatch-time-display" id="stopwatchDisplay">
+              00:00
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); width: 100%; margin: var(--space-md) 0;">
+              <div style="background: rgba(255,255,255,0.04); padding: var(--space-sm); border-radius: var(--radius-sm);">
+                <div style="font-size: 10px; font-family: var(--font-mono); color: var(--color-text-subtle);">TOTAL WATER</div>
+                <div id="targetWaterYield" style="font-family: var(--font-mono); font-size: 16px; color: var(--color-gold-bright); font-weight: 700;">288.0 g</div>
+              </div>
+
+              <div style="background: rgba(255,255,255,0.04); padding: var(--space-sm); border-radius: var(--radius-sm);">
+                <div style="font-size: 10px; font-family: var(--font-mono); color: var(--color-text-subtle);">BLOOM MASS</div>
+                <div id="bloomWaterYield" style="font-family: var(--font-mono); font-size: 16px; color: var(--color-gold-bright); font-weight: 700;">54 g</div>
+              </div>
+
+              <div style="background: rgba(255,255,255,0.04); padding: var(--space-sm); border-radius: var(--radius-sm);">
+                <div style="font-size: 10px; font-family: var(--font-mono); color: var(--color-text-subtle);">ESTIMATED TDS</div>
+                <div id="estTdsYield" style="font-family: var(--font-mono); font-size: 16px; color: var(--color-gold-bright); font-weight: 700;">1.36% TDS</div>
+              </div>
+
+              <div style="background: rgba(255,255,255,0.04); padding: var(--space-sm); border-radius: var(--radius-sm);">
+                <div style="font-size: 10px; font-family: var(--font-mono); color: var(--color-text-subtle);">EXTRACTION YIELD</div>
+                <div id="estExtractionYield" style="font-family: var(--font-mono); font-size: 16px; color: var(--color-gold-bright); font-weight: 700;">20.1% Yield</div>
+              </div>
+            </div>
+
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-subtle); margin-top: 4px;">
+              RECOMMENDED GRIND: <span id="grindMicronReadout" style="color: var(--color-gold-light);">500 - 650 μm</span>
+            </div>
+
+            <div class="stopwatch-actions">
+              <button id="btnStartTimer" class="btn-glass-primary">Start Timer</button>
+              <button id="btnResetTimer" class="btn-glass-secondary">Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         PRIVATE TASTING ATELIER & RESERVATION SECTION
+         ========================================================================== -->
+    <section class="reservation-section" id="tasting">
+      <div class="reservation-container">
+        <div class="section-eyebrow" style="justify-content: center;">PRIVATE SALON DEGUSTATION</div>
+        <h2 class="section-monumental-title dark-mode" style="margin-bottom: var(--space-xs);">
+          RESERVE ATELIER
+        </h2>
+        <p style="font-size: 1rem; color: var(--color-text-subtle); max-width: 580px; margin: 0 auto var(--space-2xl);">
+          Experience an intimate sensory journey led by our Master Sommeliers in Zurich or Bogota. Flights include rare varietal flights, water mineralization analysis, and custom roast tastings.
+        </p>
+
+        <form id="tastingBookingForm" class="reservation-form-grid">
+          <div class="form-group-item">
+            <label class="form-label" for="bookingName">Client Full Name</label>
+            <input type="text" id="bookingName" class="form-input" placeholder="e.g. Lorde Alexander Vance" required>
+          </div>
+
+          <div class="form-group-item">
+            <label class="form-label" for="bookingEmail">Direct Email Address</label>
+            <input type="email" id="bookingEmail" class="form-input" placeholder="vance@residence.com" required>
+          </div>
+
+          <div class="form-group-item">
+            <label class="form-label" for="bookingDate">Preferred Date</label>
+            <input type="date" id="bookingDate" class="form-input" value="2026-09-12" required>
+          </div>
+
+          <div class="form-group-item">
+            <label class="form-label" for="bookingTime">Tasting Salon Slot</label>
+            <select id="bookingTime" class="form-select" required>
+              <option value="11:00 AM">11:00 AM — Morning Palate Flight</option>
+              <option value="03:30 PM" selected>03:30 PM — Golden Hour Degustation</option>
+              <option value="06:00 PM">06:00 PM — Evening Terroir Omakase</option>
+            </select>
+          </div>
+
+          <div class="form-group-item">
+            <label class="form-label" for="bookingTier">Flight Experience Tier</label>
+            <select id="bookingTier" class="form-select" required>
+              <option value="geisha_trilogy" selected>The Geisha Trilogy ($120 / person)</option>
+              <option value="thermal_odyssey">Thermal Shock &amp; Anaerobic Odyssey ($95 / person)</option>
+              <option value="ancestor_masterclass">Rare Ancestor Eugenioides Masterclass ($140 / person)</option>
+            </select>
+          </div>
+
+          <div class="form-group-item">
+            <label class="form-label" for="bookingGuests">Party Size (Private Salon)</label>
+            <select id="bookingGuests" class="form-select" required>
+              <option value="1">1 Guest (Private Sommelier Flight)</option>
+              <option value="2" selected>2 Guests (Salon Tasting)</option>
+              <option value="4">4 Guests (Private Table)</option>
+              <option value="6">6 Guests (Full Salon Buyout)</option>
+            </select>
+          </div>
+
+          <div class="form-group-item" style="grid-column: 1 / -1;">
+            <label class="form-label" for="bookingNotes">Sensory Notes or Dietary Restrictions</label>
+            <input type="text" id="bookingNotes" class="form-input" placeholder="e.g. Sensitivity to intense acidity, interest in low-caffeine varietals">
+          </div>
+
+          <div style="grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-md); border-top: 1px solid rgba(255,255,255,0.08);">
+            <div>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--color-text-subtle);">ESTIMATED DEPOSIT:</span>
+              <div id="bookingEstimatedTotal" style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; color: var(--color-gold-bright);">$240.00</div>
+            </div>
+
+            <button type="submit" class="btn-glass-primary" style="padding: 1rem 2.5rem;">
+              Confirm Reservation ↗
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         TRANSPARENCY & DIRECT TRADE SUSTAINABILITY LEDGER
+         ========================================================================== -->
+    <section style="background: #080706; padding: var(--space-4xl) var(--space-2xl); border-top: 1px solid rgba(255,255,255,0.06);">
+      <div style="max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4xl); align-items: center;">
+        <div>
+          <div class="section-eyebrow">ETHICAL ECONOMIC ARCHITECTURE</div>
+          <h3 style="font-family: var(--font-display); font-size: 2rem; color: #ffffff; margin-bottom: var(--space-md);">
+            350% Above Fair Trade Baseline
+          </h3>
+          <p style="font-size: 0.95rem; color: var(--color-text-subtle); line-height: 1.6; margin-bottom: var(--space-lg);">
+            We bypass commodity middle-brokers, delivering direct liquidity to family-owned micro-farms in Boquete, Huila, and Valle del Cauca. Every bag includes an immutable cryptographic hash guaranteeing soil microbiome stewardship and farm-gate equity.
+          </p>
+          <div style="display: flex; gap: var(--space-xl);">
+            <div>
+              <div style="font-family: var(--font-display); font-size: 2rem; color: var(--color-gold-bright); font-weight: 700;">$8.50/lb</div>
+              <div style="font-size: 11px; font-family: var(--font-mono); color: var(--color-text-subtle);">MAISON PUR FARM-GATE</div>
+            </div>
+            <div>
+              <div style="font-family: var(--font-display); font-size: 2rem; color: rgba(255,255,255,0.35); font-weight: 700;">$1.90/lb</div>
+              <div style="font-size: 11px; font-family: var(--font-mono); color: var(--color-text-subtle);">C-MARKET COMMODITY BASE</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: rgba(20, 17, 15, 0.85); border: 1px solid rgba(198,156,109,0.25); border-radius: var(--radius-lg); padding: var(--space-2xl);">
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-gold); margin-bottom: 8px;">
+            [ 2026 SOIL REGENERATION AUDIT ]
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                <span>Volcanic Shade Canopy Index</span>
+                <span style="font-family: var(--font-mono); color: var(--color-gold-bright);">98.4%</span>
+              </div>
+              <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+                <div style="width: 98.4%; height: 100%; background: var(--color-gold);"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                <span>Organic Living Microorganism Diversity</span>
+                <span style="font-family: var(--font-mono); color: var(--color-gold-bright);">94.1%</span>
+              </div>
+              <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+                <div style="width: 94.1%; height: 100%; background: var(--color-gold);"></div>
+              </div>
+            </div>
+            <div>
+              <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                <span>Carbon Neutrality &amp; Nitrogen Purging</span>
+                <span style="font-family: var(--font-mono); color: var(--color-gold-bright);">100%</span>
+              </div>
+              <div style="height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px;">
+                <div style="width: 100%; height: 100%; background: var(--color-gold);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner-container">
+      <div class="footer-top-grid">
+        <div>
+          <div class="footer-brand-title">MAISON PUR &amp;</div>
+          <p style="font-size: 0.9rem; line-height: 1.6; max-width: 380px;">
+            A haute-couture coffee maison celebrating extreme-altitude terroirs, thermodynamic roasting science, and sensory interior architecture.
+          </p>
+        </div>
+
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-gold); letter-spacing: 0.1em; margin-bottom: 12px;">ATELIERS</div>
+          <ul style="list-style: none; font-size: 13px; line-height: 2;">
+            <li>Zurich — Bahnhofstrasse 45</li>
+            <li>Bogota — Quinta Camacho</li>
+            <li>Tokyo — Ginza 6-Chome</li>
+            <li>New York — Tribeca Loft</li>
+          </ul>
+        </div>
+
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-gold); letter-spacing: 0.1em; margin-bottom: 12px;">NAVIGATION</div>
+          <ul style="list-style: none; font-size: 13px; line-height: 2;">
+            <li><a href="#about">About Maison</a></li>
+            <li><a href="#atelier-3d">3D Atelier</a></li>
+            <li><a href="#harvests">Curated Harvests</a></li>
+            <li><a href="#quiz">Palate Quiz</a></li>
+            <li><a href="#stages">Stages of Work</a></li>
+            <li><a href="#sensory-lab">Sensory Lab</a></li>
+            <li><a href="#tasting">Private Tasting</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--color-gold); letter-spacing: 0.1em; margin-bottom: 12px;">PRIVILEGE DISPATCH</div>
+          <p style="font-size: 12px; margin-bottom: 12px;">Receive secret micro-lot drop notifications prior to public release.</p>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Your direct email" class="form-input" style="padding: 0.5rem 0.8rem; font-size: 12px; flex: 1;">
+            <button class="btn-glass-primary" style="padding: 0.5rem 1rem; font-size: 11px;" onclick="window.MaisonApp.showToast('Privilege subscription verified');">Join</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 MAISON PUR &amp;. All Rights Reserved. Compliant with LGPD, GDPR &amp; SCA Standards.</div>
+        <div style="display: flex; gap: var(--space-lg);">
+          <a href="#" onclick="window.MaisonApp.showToast('LGPD/GDPR Privacy Terms verified'); return false;">Privacy Policy</a>
+          <a href="#" onclick="window.MaisonApp.showToast('Direct Trade provenance verified'); return false;">Direct Trade Charter</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sensory Detail Radar Modal -->
+  <div id="sensoryDetailModal" class="modal-backdrop-overlay">
+    <div class="liquid-modal-panel">
+      <button class="modal-close-btn" onclick="window.MaisonCatalog.closeSensoryModal()">&times;</button>
+      <div id="sensoryModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Booking & Checkout Confirmation Modal -->
+  <div id="bookingConfirmationModal" class="modal-backdrop-overlay">
+    <div class="liquid-modal-panel">
+      <button class="modal-close-btn" onclick="document.getElementById('bookingConfirmationModal').classList.remove('active')">&times;</button>
+      <div id="bookingConfirmationContent"></div>
+    </div>
+  </div>
+
+  <!-- Shopping Cart & Atelier Box Drawer -->
+  <aside id="cartDrawer" class="cart-drawer-container">
+    <div class="cart-drawer-header">
+      <div>
+        <div style="font-family: var(--font-mono); font-size: 10px; color: var(--color-gold);">PRIVATE CLIENTELE</div>
+        <div style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; color: #ffffff;">Your Atelier Box</div>
+      </div>
+      <button id="closeCartDrawer" class="modal-close-btn" style="position: static; width: 32px; height: 32px; font-size: 18px;">&times;</button>
+    </div>
+
+    <div id="cartDrawerItemsList" class="cart-drawer-body"></div>
+
+    <div class="cart-drawer-footer">
+      <div style="display: flex; gap: 8px; margin-bottom: var(--space-md);">
+        <input type="text" id="couponCodeInput" placeholder="Privilege Code (e.g. MAISON10)" class="form-input" style="flex: 1; padding: 0.5rem 0.8rem; font-size: 12px;">
+        <button id="btnApplyCoupon" class="btn-glass-secondary" style="padding: 0.5rem 1rem; font-size: 11px;">Apply</button>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--color-text-subtle); margin-bottom: 4px;">
+        <span>Subtotal</span>
+        <span id="cartSubtotalAmount" style="font-family: var(--font-mono); color: #ffffff;">$0.00</span>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--color-text-subtle); margin-bottom: 4px;">
+        <span>Privilege Allowance</span>
+        <span id="cartDiscountAmount" style="font-family: var(--font-mono); color: var(--color-gold-bright);">$0.00</span>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; font-size: 13px; color: var(--color-text-subtle); margin-bottom: var(--space-md);">
+        <span>Direct Roastery Shipping</span>
+        <span id="cartShippingAmount" style="font-family: var(--font-mono); color: #ffffff;">Complimentary</span>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-family: var(--font-display); font-weight: 700; color: #ffffff; padding-top: var(--space-sm); border-top: 1px solid rgba(255,255,255,0.08); margin-bottom: var(--space-lg);">
+        <span>Total Settled</span>
+        <span id="cartTotalAmount" style="color: var(--color-gold-bright);">$0.00</span>
+      </div>
+
+      <button id="btnProceedCheckout" class="btn-glass-primary" style="width: 100%; padding: 0.95rem;">
+        Secure Allocation ↗
+      </button>
+    </div>
+  </aside>
+
+  <!-- Toast Notification Hub -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/audio-synth.js"></script>
+  <script src="js/three-atelier-3d.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/palate-quiz.js"></script>
+  <script src="js/brew-calculator.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

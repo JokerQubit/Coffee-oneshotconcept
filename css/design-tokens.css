@@ -1,0 +1,143 @@
+/* ==========================================================================
+   MAISON PUR & — DESIGN TOKENS & FOUNDATIONS
+   Haute Torréfaction & Architecture Sensorielle
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+:root {
+  /* Color Palette — Haute Terroir & Architecture */
+  --color-obsidian: #0c0a09;
+  --color-espresso: #14110f;
+  --color-walnut: #1f1a17;
+  --color-smoke: #2a2420;
+  --color-charcoal-muted: #3d352f;
+  
+  --color-alabaster: #fcfbf8;
+  --color-bone: #f6f3eb;
+  --color-sand: #ece7db;
+  --color-linen: #dfd9cb;
+  
+  --color-gold: #c69c6d;
+  --color-gold-light: #dfbe99;
+  --color-gold-bright: #ecd5b8;
+  --color-gold-dark: #9b7244;
+  --color-gold-glow: rgba(198, 156, 109, 0.25);
+  
+  --color-text-dark: #141210;
+  --color-text-body: #4a443e;
+  --color-text-muted: #7d756c;
+  --color-text-light: #f7f5f0;
+  --color-text-subtle: #a8a096;
+  
+  /* Borders & Dividers */
+  --border-light: rgba(20, 18, 16, 0.08);
+  --border-medium: rgba(20, 18, 16, 0.16);
+  --border-dark: rgba(255, 255, 255, 0.12);
+  --border-gold: rgba(198, 156, 109, 0.35);
+  --border-specular: rgba(255, 255, 255, 0.4);
+
+  /* Typography Stacks */
+  --font-display: 'Syne', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif-italic: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Typography Scale */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;    /* 18px */
+  --text-xl: 1.25rem;     /* 20px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 2rem;       /* 32px */
+  --text-4xl: 2.75rem;    /* 44px */
+  --text-5xl: 3.75rem;    /* 60px */
+  --text-6xl: 5rem;       /* 80px */
+  --text-huge: clamp(3.5rem, 8.5vw, 9.5rem);
+
+  /* Spacing Scale (8pt Grid) */
+  --space-2xs: 0.25rem;   /* 4px */
+  --space-xs: 0.5rem;     /* 8px */
+  --space-sm: 0.75rem;    /* 12px */
+  --space-md: 1rem;       /* 16px */
+  --space-lg: 1.5rem;     /* 24px */
+  --space-xl: 2rem;       /* 32px */
+  --space-2xl: 3rem;      /* 48px */
+  --space-3xl: 4.5rem;    /* 72px */
+  --space-4xl: 6rem;      /* 96px */
+  --space-5xl: 8rem;      /* 128px */
+
+  /* Glassmorphism & Blurs */
+  --glass-surface-dark: rgba(18, 15, 13, 0.75);
+  --glass-surface-light: rgba(252, 251, 248, 0.85);
+  --glass-card-dark: rgba(31, 26, 23, 0.65);
+  --blur-sm: blur(8px);
+  --blur-md: blur(20px);
+  --blur-lg: blur(36px);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 12px 28px -6px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.15);
+  --shadow-dramatic: 0 32px 64px -16px rgba(12, 10, 9, 0.45);
+  --shadow-glass: inset 0 1px 1px var(--border-specular), 0 20px 40px -10px rgba(0, 0, 0, 0.35);
+
+  /* Transitions & Timing */
+  --ease-fluid: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-gentle: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.35s;
+  --duration-slow: 0.65s;
+
+  /* Layout */
+  --container-max: 1380px;
+  --header-height: 88px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--color-obsidian);
+  color: var(--color-text-light);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-obsidian);
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
